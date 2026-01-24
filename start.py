@@ -27,6 +27,7 @@ class AlienInvasion:
         """Запускає основний цикл гри."""
         while True:
             self._check_events()
+            self.ship.update()
             self._update_screen()
             self.clock.tick(60)
 
@@ -38,7 +39,11 @@ class AlienInvasion:
             elif event.type == pg.KEYDOWN:
                 if event.key == pg.K_RIGHT:
                     # Рух корабля вправо
-                    self.ship.rect.x += 1
+                    self.ship.moving_right = True
+            elif event.type == pg.KEYUP:
+                if event.key == pg.K_RIGHT:
+                    # Зупинка руху корабля вправо
+                    self.ship.moving_right = False
             
     
     def _update_screen(self):
