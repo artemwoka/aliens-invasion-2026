@@ -40,10 +40,16 @@ class AlienInvasion:
                 if event.key == pg.K_RIGHT:
                     # Рух корабля вправо
                     self.ship.moving_right = True
+                elif event.key == pg.K_LEFT:
+                    # Рух корабля вліво
+                    self.ship.moving_left = True
             elif event.type == pg.KEYUP:
                 if event.key == pg.K_RIGHT:
                     # Зупинка руху корабля вправо
                     self.ship.moving_right = False
+                elif event.key == pg.K_LEFT:
+                    # Зупинка руху корабля вліво
+                    self.ship.moving_left = False
             
     
     def _update_screen(self):
