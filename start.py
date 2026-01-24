@@ -35,6 +35,11 @@ class AlienInvasion:
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 sys.exit()
+            elif event.type == pg.KEYDOWN:
+                if event.key == pg.K_RIGHT:
+                    # Рух корабля вправо
+                    self.ship.rect.x += 1
+            
     
     def _update_screen(self):
         """Оновлює зображення на екрані та переходить до нового екрану."""
