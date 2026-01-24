@@ -2,6 +2,8 @@ import sys
 
 import pygame as pg
 
+from settings import Settings
+
 
 class AlienInvasion:
     """Клас для керування ресурсами та основною логікою гри."""
@@ -10,12 +12,11 @@ class AlienInvasion:
         """Ініціалізує гру та створює її ресурси."""
         pg.init()
         self.clock = pg.time.Clock()
+        self.settings = Settings()
 
-        self.screen = pg.display.set_mode((1200, 700))
+        self.screen = pg.display.set_mode(
+            (self.settings.screen_width, self.settings.screen_height))
         pg.display.set_caption("Alien Invasion")
-
-        #Призначає колір фону.
-        self.bg_color = (230, 230, 230)
 
     def run_game(self):
         """Запускає основний цикл гри."""
@@ -26,7 +27,7 @@ class AlienInvasion:
                     sys.exit()
             
             #Заповнює екран кольором фону.
-            self.screen.fill(self.bg_color)
+            self.screen.fill(self.settings.bg_color)
 
             #Відображає останній екран.
             pg.display.flip()
