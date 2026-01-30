@@ -31,9 +31,9 @@ class Ship:
     def update(self):
         """Оновлює позицію корабля залежно від флагів переміщення."""
         if self.moving_right:
-            self.rect.x += self.settings.ship_speed
+            self.x += self.settings.ship_speed
         if self.moving_left:
-            self.rect.x -= self.settings.ship_speed
+            self.x -= self.settings.ship_speed
 
         #Оновлює об'єкт rect на основі self.x
         self.rect.x = self.x
