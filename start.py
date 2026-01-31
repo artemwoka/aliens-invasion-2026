@@ -57,6 +57,9 @@ class AlienInvasion:
                     self.ship.moving_left = True
                 elif event.key == pg.K_ESCAPE:
                     sys.exit()
+                elif event.key == pg.K_SPACE:
+                    self.fire_bullet()
+
     
     def _check_keyup_events(self, event):
         """Відстежує відпускання клавіш."""
@@ -68,12 +71,17 @@ class AlienInvasion:
                     # Зупинка руху корабля вліво
                     self.ship.moving_left = False
 
-            
+    def fire_bullet(self):
+        """Створює новий снаряд та додає його до групи снарядів."""
+        new_bullet = Bullet(self)
+        self.bullets.add(new_bullet)      
     
     def _update_screen(self):
         """Оновлює зображення на екрані та переходить до нового екрану."""
         #Оновлює екран під час кожного проходу циклу.
         self.screen.fill(self.settings.bg_color)
+        for bullet in self.bullets.sprites():
+            bullet.draw_bullet()
         self.ship.blitme()
 
         #Відображає останній екран.
