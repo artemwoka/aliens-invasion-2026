@@ -40,6 +40,8 @@ class AlienInvasion:
                 self._check_keydown_events(event)
             elif event.type == pg.KEYUP:
                 self._check_keyup_events(event)
+            
+            
     
     def _check_keydown_events(self, event):
         """Відстежує натискання клавіш."""
@@ -50,6 +52,8 @@ class AlienInvasion:
                 elif event.key == pg.K_LEFT:
                     # Рух корабля вліво
                     self.ship.moving_left = True
+                elif event.key == pg.K_ESCAPE:
+                    sys.exit()
     
     def _check_keyup_events(self, event):
         """Відстежує відпускання клавіш."""
