@@ -8,5 +8,11 @@ class Settings:
         self.screen_height = 700
         self.bg_color = "grey90"
         
-        #налаштування корабля
+        # Налаштування корабля
         self.ship_speed = 1.5
+
+        # Налаштування снаряда
+        self.bullet_speed = 2
+        self.bullet_width = 3
+        self.bullet_height = 15
+        self.bullet_color = "firebrick2"
