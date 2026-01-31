@@ -4,6 +4,7 @@ import pygame as pg
 
 from settings import Settings
 from ship import Ship
+from bullet import Bullet
 
 
 class AlienInvasion:
@@ -22,12 +23,14 @@ class AlienInvasion:
 
         # Смворення ігрових об'єктів
         self.ship = Ship(self)
+        self.bullets = pg.sprite.Group()
 
     def run_game(self):
         """Запускає основний цикл гри."""
         while True:
             self._check_events()
             self.ship.update()
+            self.bullets.update()
             self._update_screen()
             self.clock.tick(60)
 
