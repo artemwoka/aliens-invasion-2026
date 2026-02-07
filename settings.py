@@ -17,3 +17,6 @@ class Settings:
         self.bullet_height = 15
         self.bullet_color = "firebrick2"
         self.bullets_allowed = 3
+
+        # Налаштування прибульців
+        self.alien_speed = 1

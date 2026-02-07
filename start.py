@@ -35,6 +35,7 @@ class AlienInvasion:
             self._check_events()
             self.ship.update()
             self.bullets.update()
+            self._update_aliens()
             self._update_screen()
             self.clock.tick(60)
 
@@ -105,7 +106,10 @@ class AlienInvasion:
         if len(self.bullets) < self.settings.bullets_allowed:
             new_bullet = Bullet(self)
             self.bullets.add(new_bullet)
-
+    
+    def _update_aliens(self):
+        """Оновлює позиції всіх прибульців у флоті."""
+        self.aliens.update()
     
     def _update_screen(self):
         """Оновлює зображення на екрані та переходить до нового екрану."""
