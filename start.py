@@ -38,6 +38,12 @@ class AlienInvasion:
             self._update_aliens()
             self._update_screen()
             self.clock.tick(60)
+    
+    def _change_fleet_direction(self):
+        """Опускає весь флот і змінює його напрямок."""
+        for alien in self.aliens.sprites():
+            alien.rect.y += self.settings.fleet_drop_speed
+        self.settings.fleet_direction *= -1
 
     def _check_events(self):
         """Відстежує події клавіатури та миші."""
@@ -65,7 +71,13 @@ class AlienInvasion:
                 elif event.key == pg.K_SPACE:
                     self.fire_bullet()
 
-    
+    def _check_fleet_edges(self):
+        """Реагує на досягнення прибульцем краю екрану."""
+        for alien in self.aliens.sprites():
+            if alien._check_edges():
+                self._change_fleet_direction()
+                break
+
     def _check_keyup_events(self, event):
         """Відстежує відпускання клавіш."""
         if event.type == pg.KEYUP:
@@ -109,6 +121,7 @@ class AlienInvasion:
     
     def _update_aliens(self):
         """Оновлює позиції всіх прибульців у флоті."""
+        self._check_fleet_edges()
         self.aliens.update()
     
     def _update_screen(self):
