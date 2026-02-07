@@ -75,7 +75,13 @@ class AlienInvasion:
                     # Зупинка руху корабля вліво
                     self.ship.moving_left = False
 
+    def _create_alien(self, x_position):
+        new_alien = Alien(self)
+        self.aliens.add(new_alien)
+        new_alien.x = x_position
+        new_alien.rect.x = x_position
 
+    
     def _create_fleet(self):
         """Створює флот прибульців."""
         #Строрення прибульця і визначення кількості прибульців, які помістяться в ряд.
@@ -85,10 +91,7 @@ class AlienInvasion:
 
         current_x = alien_width
         while current_x < (self.settings.screen_width - 2 * alien_width):
-            new_alien = Alien(self)
-            self.aliens.add(new_alien)
-            new_alien.x = current_x
-            new_alien.rect.x = current_x
+            self._create_alien(current_x)
             current_x += alien_width * 2
            
 
