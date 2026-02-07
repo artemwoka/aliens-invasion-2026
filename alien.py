@@ -1,6 +1,7 @@
 import pygame as pg
 import pygame.sprite as sprite
 
+
 class Alien(sprite.Sprite):
     """Клас для прибульця"""
 
@@ -14,8 +15,8 @@ class Alien(sprite.Sprite):
         self.rect = self.image.get_rect()
 
         # Кожен новий прибулець з'являється у верхньому лівому куті екрану.
-
         self.rect.x = self.rect.width
         self.rect.y = self.rect.height
+
         # Зберігає точну горизонтальну позицію прибульця.
         self.x = float(self.rect.x)

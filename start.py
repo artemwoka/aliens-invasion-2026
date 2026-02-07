@@ -2,6 +2,7 @@ import sys
 
 import pygame as pg
 
+from alien import Alien
 from settings import Settings
 from ship import Ship
 from bullet import Bullet
@@ -24,6 +25,9 @@ class AlienInvasion:
         # Смворення ігрових об'єктів
         self.ship = Ship(self)
         self.bullets = pg.sprite.Group()
+        self.aliens = pg.sprite.Group()
+
+        self._create_fleet()
 
     def run_game(self):
         """Запускає основний цикл гри."""
@@ -71,6 +75,13 @@ class AlienInvasion:
                     # Зупинка руху корабля вліво
                     self.ship.moving_left = False
 
+
+    def _create_fleet(self):
+        """Створює флот прибульців."""
+        #Строрення прибульця
+        alien = Alien(self)
+        self.aliens.add(alien)
+
     def fire_bullet(self):
         """Створює новий снаряд та додає його до групи снарядів."""
         if len(self.bullets) < self.settings.bullets_allowed:
@@ -84,6 +95,7 @@ class AlienInvasion:
         self.screen.fill(self.settings.bg_color)
         for bullet in self.bullets.sprites():
             bullet.draw_bullet()
+        self.aliens.draw(self.screen)
         self.ship.blitme()
 
         #Відображає останній екран.
