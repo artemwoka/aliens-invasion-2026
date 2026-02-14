@@ -34,10 +34,7 @@ class AlienInvasion:
         while True:
             self._check_events()
             self.ship.update()
-            self.bullets.update()
-            # Перевірка потраплянь в прибульців
-            collisions = pg.sprite.groupcollide(self.bullets, self.aliens,
-                                                 True, True)
+            self._update_bullets()
             self._update_aliens()
             self._update_screen()
             self.clock.tick(60)
@@ -126,7 +123,18 @@ class AlienInvasion:
         """Оновлює позиції всіх прибульців у флоті."""
         self._check_fleet_edges()
         self.aliens.update()
-    
+
+    def _update_bullets(self):
+        """Оновлює позиції снарядів та видаляє старі снаряди."""
+        self.bullets.update()
+        # Перевірка потраплянь в прибульців
+        collisions = pg.sprite.groupcollide(self.bullets, self.aliens,
+                                                 True, True)
+        if not self.aliens:
+            # Знищує існуючі снаряди та створює новий флот.
+            self.bullets.empty()
+            self._create_fleet()
+        
     def _update_screen(self):
         """Оновлює зображення на екрані та переходить до нового екрану."""
         #Оновлює екран під час кожного проходу циклу.
