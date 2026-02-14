@@ -123,6 +123,10 @@ class AlienInvasion:
         """Оновлює позиції всіх прибульців у флоті."""
         self._check_fleet_edges()
         self.aliens.update()
+        # Перевірка зіткнення прибульців з кораблем
+        if pg.sprite.spritecollideany(self.ship, self.aliens):
+            print("Корабель збитий!")
+           
 
     def _update_bullets(self):
         """Оновлює позиції снарядів та видаляє старі снаряди."""
