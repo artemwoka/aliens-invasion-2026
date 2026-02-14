@@ -27,6 +27,11 @@ class Ship:
     def blitme(self):
         """Відображає корабель у поточній позиції."""
         self.screen.blit(self.image, self.rect)
+
+    def center_ship(self):
+        """Розміщує корабель по центру нижньої частини екрану."""
+        self.rect.midbottom = self.screen_rect.midbottom
+        self.x = float(self.rect.x)
     
     def update(self):
         """Оновлює позицію корабля залежно від флагів переміщення."""
