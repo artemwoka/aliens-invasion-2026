@@ -77,6 +77,9 @@ class AlienInvasion:
                 self._check_keydown_events(event)
             elif event.type == pg.KEYUP:
                 self._check_keyup_events(event)
+            elif event.type == pg.MOUSEBUTTONDOWN:
+                mouse_pos = pg.mouse.get_pos()
+                self._check_play_button(mouse_pos)
             
             
     
@@ -110,6 +113,11 @@ class AlienInvasion:
                 elif event.key == pg.K_LEFT:
                     # Зупинка руху корабля вліво
                     self.ship.moving_left = False
+        
+    def _check_play_button(self, mouse_pos):
+        """Починає нову гру при натисканні кнопки Play."""
+        if self.play_button.rect.collidepoint(mouse_pos) and not self.stats.game_active:
+            self.stats.game_active = True
 
     def _create_alien(self, x_position, y_position):
         new_alien = Alien(self)
