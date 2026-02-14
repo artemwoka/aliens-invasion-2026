@@ -124,6 +124,9 @@ class AlienInvasion:
             self._create_fleet()
             self.ship.center_ship()
 
+            # Сховати курсор миші.
+            pg.mouse.set_visible(False)
+
     def _create_alien(self, x_position, y_position):
         new_alien = Alien(self)
         self.aliens.add(new_alien)
@@ -153,7 +156,7 @@ class AlienInvasion:
         """Створює новий снаряд та додає його до групи снарядів."""
         if len(self.bullets) < self.settings.bullets_allowed:
             new_bullet = Bullet(self)
-            self.bullets.add(new_bullet)
+            self.bullets.add(new_bullet)Add
 
     def _ship_hit(self):
         """Обробляє зіткнення корабля з прибульцем."""
@@ -168,6 +171,7 @@ class AlienInvasion:
             sleep(0.5)
         else:
             self.stats.game_active = False
+            pg.mouse.set_visible(True)
             
     
     def _update_aliens(self):
