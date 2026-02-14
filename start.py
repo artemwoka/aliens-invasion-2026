@@ -50,6 +50,16 @@ class AlienInvasion:
         for alien in self.aliens.sprites():
             alien.rect.y += self.settings.fleet_drop_speed
         self.settings.fleet_direction *= -1
+    
+    def _check_alliens_bottom(self):
+        """Перевіряє, чи досягнув який-небудь прибулець нижнього краю екрану."""
+        screen_rect = self.screen.get_rect()
+        for alien in self.aliens.sprites():
+            if alien.rect.bottom >= screen_rect.bottom:
+                # Зіткнення відбувається так само, як і при зіткненні з кораблем.
+                self._ship_hit()
+                break
+
 
     def _check_events(self):
         """Відстежує події клавіатури та миші."""
@@ -145,6 +155,8 @@ class AlienInvasion:
         # Перевірка зіткнення прибульців з кораблем
         if pg.sprite.spritecollideany(self.ship, self.aliens):
             self._ship_hit()
+
+        self._check_alliens_bottom()
            
 
     def _update_bullets(self):

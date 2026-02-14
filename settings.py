@@ -14,7 +14,7 @@ class Settings:
 
         # Налаштування снаряда
         self.bullet_speed = 5.0
-        self.bullet_width = 3
+        self.bullet_width = 300
         self.bullet_height = 15
         self.bullet_color = "firebrick2"
         self.bullets_allowed = 3
