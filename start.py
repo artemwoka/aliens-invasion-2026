@@ -156,7 +156,7 @@ class AlienInvasion:
         """Створює новий снаряд та додає його до групи снарядів."""
         if len(self.bullets) < self.settings.bullets_allowed:
             new_bullet = Bullet(self)
-            self.bullets.add(new_bullet)Add
+            self.bullets.add(new_bullet)
 
     def _ship_hit(self):
         """Обробляє зіткнення корабля з прибульцем."""
@@ -195,6 +195,7 @@ class AlienInvasion:
             # Знищує існуючі снаряди та створює новий флот.
             self.bullets.empty()
             self._create_fleet()
+            self.settings.increase_speed()
         
     def _update_screen(self):
         """Оновлює зображення на екрані та переходить до нового екрану."""
