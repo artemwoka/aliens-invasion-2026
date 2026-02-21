@@ -14,8 +14,29 @@ class Scoreboard:
         self.text_color = "gray10"
         self.font = pg.font.SysFont(None, 48)
 
-        # Підготовка початкового зображення рахунку.
+        # Підготовка зображення.
         self.prepare_score()
+        self.prepare_high_score()
+
+    def check_high_score(self):
+        """Перевіряє, чи встановлено новий рекорд."""
+        if self.stats.score > self.stats.high_score:
+            self.stats.high_score = self.stats.score
+            self.prepare_high_score()
+
+    def prepare_high_score(self):
+        """Перетворює рекорд на зображення."""
+        rounded_score = round(self.stats.high_score, -1)
+        score_str = f"{rounded_score:,}"
+        self.high_score_image = self.font.render(score_str, True,
+                self.text_color, self.settings.bg_color
+         )
+        
+        # Виводить рекорд по центру верхньої частини екрану.
+        self.high_score_rect = self.high_score_image.get_rect()
+        self.high_score_rect.centerx = self.screen_rect.centerx
+        self.high_score_rect.top = 20
+
     
     def prepare_score(self):
         """Перетворює поточний рахунок у зображення."""
@@ -32,5 +53,6 @@ class Scoreboard:
     def show_score(self):
         """Виводить рахунок на екран."""
         self.screen.blit(self.score_image, self.score_rect)
+        self.screen.blit(self.high_score_image, self.high_score_rect)
 
         

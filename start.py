@@ -208,6 +208,7 @@ class AlienInvasion:
 
                 self.stats.score += self.settings.alien_points * len(aliens)
             self.sb.prepare_score()
+            self.sb.check_high_score()
         
     def _update_screen(self):
         """Оновлює зображення на екрані та переходить до нового екрану."""

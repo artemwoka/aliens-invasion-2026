@@ -19,7 +19,7 @@ class Settings:
 
         # Налаштування прибульців
         
-        self.fleet_drop_speed = 10
+        self.fleet_drop_speed = 100
         
 
         # Темп прискорення гри
