@@ -37,6 +37,9 @@ class Settings:
         # fleet_direction = 1 означає рух праворуч, а -1 - рух ліворуч.
         self.fleet_direction = 1
 
+        # Підрахунок очок
+        self.alien_points = 50
+
     def increase_speed(self):
         """Збільшує налаштування швидкості."""
         self.ship_speed *= self.speedup_scale

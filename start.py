@@ -202,6 +202,9 @@ class AlienInvasion:
             self.bullets.empty()
             self._create_fleet()
             self.settings.increase_speed()
+        if collisions:
+            self.stats.score += self.settings.alien_points 
+            self.sb.prepare_score()
         
     def _update_screen(self):
         """Оновлює зображення на екрані та переходить до нового екрану."""
