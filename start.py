@@ -122,8 +122,9 @@ class AlienInvasion:
         if button_clicked and not self.stats.game_active:
             # Скидає налаштування гри до початкових значень.
             self.settings.initialize_dynamic_settings()
-            self.stats.game_active = True
             self.stats.reset_stats()
+            self.sb.prepare_score()
+            self.stats.game_active = True
 
             self.aliens.empty()
             self.bullets.empty()
@@ -203,7 +204,9 @@ class AlienInvasion:
             self._create_fleet()
             self.settings.increase_speed()
         if collisions:
-            self.stats.score += self.settings.alien_points 
+            for aliens in collisions.values():
+
+                self.stats.score += self.settings.alien_points * len(aliens)
             self.sb.prepare_score()
         
     def _update_screen(self):
