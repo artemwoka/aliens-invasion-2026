@@ -8,6 +8,7 @@ class GameStats:
 
         # Гра запускається в активному стані.
         self.game_active = True
+        self.game_paused = False
 
         # Рекорд не повинен скидатися.
         self.high_score = 0
