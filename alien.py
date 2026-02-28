@@ -12,7 +12,9 @@ class Alien(sprite.Sprite):
         self.settings = ai_game.settings
 
         # Завантажує зображення прибульця та отримує його rect.
-        self.image = pg.image.load('images/alien.bmp')
+        self.image = pg.image.load(
+            "images/" + "alien-dark.bmp" if self.settings.dark_mode else "alien.bmp"
+            )
         self.rect = self.image.get_rect()
 
         # Кожен новий прибулець з'являється у верхньому лівому куті екрану.

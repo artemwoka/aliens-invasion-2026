@@ -13,7 +13,8 @@ class Ship(Sprite):
         self.settings = ai_game.settings
 
         #Завантажує зображення корабля та отримує його прямокутник.
-        self.image = pg.image.load('images/ship.bmp')
+        self.image = pg.image.load(
+            "images/" + "ship-dark.bmp" if self.settings.dark_mode else "ship.bmp")
         self.rect = self.image.get_rect()
 
         #Кожен новий корабель з'являється внизу посередині екрану.

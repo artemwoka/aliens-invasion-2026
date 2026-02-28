@@ -6,7 +6,8 @@ class Settings:
         #Параметри екрану
         self.screen_width = 1200
         self.screen_height = 700
-        self.bg_color = "grey90"
+        self.dark_mode = True
+        self.bg_color = "black" if self.dark_mode else "grey90"
         
         # Налаштування корабля
         self.ship_limit = 3
