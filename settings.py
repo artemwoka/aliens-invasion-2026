@@ -12,7 +12,7 @@ class Settings:
         self.ship_limit = 3
 
         # Налаштування снаряда
-        self.bullet_width = 800
+        self.bullet_width = 3
         self.bullet_height = 15
         self.bullet_color = "firebrick2"
         self.bullets_allowed = 3
@@ -23,7 +23,7 @@ class Settings:
         
 
         # Темп прискорення гри
-        self.speedup_scale = 2
+        self.speedup_scale = 1.2
         self.score_scale = 1.5
 
         self.initialize_dynamic_settings()
