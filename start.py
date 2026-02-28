@@ -10,6 +10,7 @@ from game_stats import GameStats
 from scoreboard import Scoreboard
 from settings import Settings
 from ship import Ship
+from star import Star
 
 
 class AlienInvasion:
@@ -31,6 +32,9 @@ class AlienInvasion:
         self.sb = Scoreboard(self)
 
         # Смворення ігрових об'єктів
+        self.stars = pg.sprite.Group()
+        for _ in range(self.settings.star_limit):
+            self.stars.add(Star(self))
         self.ship = Ship(self)
         self.bullets = pg.sprite.Group()
         self.aliens = pg.sprite.Group()
@@ -227,6 +231,7 @@ class AlienInvasion:
         """Оновлює зображення на екрані та переходить до нового екрану."""
         #Оновлює екран під час кожного проходу циклу.
         self.screen.fill(self.settings.bg_color)
+        self.stars.update()
         for bullet in self.bullets.sprites():
             bullet.draw_bullet()
         self.aliens.draw(self.screen)

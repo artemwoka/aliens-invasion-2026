@@ -22,6 +22,14 @@ class Settings:
         
         self.fleet_drop_speed = 10
         
+        # Параметри зірок
+        self.star_limit = 100
+        self.star_speed = 0.1
+        self.star_start_color = 200
+        self.star_color_limit = 255
+        self.star_color_step = 0.15
+        self.star_radius = 3
+        
 
         # Темп прискорення гри
         self.speedup_scale = 1.2
