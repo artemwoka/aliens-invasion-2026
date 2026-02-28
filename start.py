@@ -125,6 +125,7 @@ class AlienInvasion:
             self.stats.reset_stats()
             self.sb.prepare_score()
             self.sb.prepare_level()
+            self.sb.prepare_ships()
             self.stats.game_active = True
 
             self.aliens.empty()
@@ -168,9 +169,9 @@ class AlienInvasion:
 
     def _ship_hit(self):
         """Обробляє зіткнення корабля з прибульцем."""
-        if self.stats.ships_left > 0:
-             
+        if self.stats.ships_left > 0:             
             self.stats.ships_left -= 1
+            self.sb.prepare_ships()
             self.aliens.empty()
             self.bullets.empty()
             self._create_fleet()

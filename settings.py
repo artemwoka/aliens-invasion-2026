@@ -23,7 +23,7 @@ class Settings:
         
 
         # Темп прискорення гри
-        self.speedup_scale = 1.2
+        self.speedup_scale = 2
         self.score_scale = 1.5
 
         self.initialize_dynamic_settings()
