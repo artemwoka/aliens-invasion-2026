@@ -98,6 +98,8 @@ class AlienInvasion:
                     sys.exit()
                 elif event.key == pg.K_SPACE:
                     self.fire_bullet()
+                elif event.key == pg.K_RETURN and not self.stats.game_active:
+                    self.start_new_game()
 
     def _check_fleet_edges(self):
         """Реагує на досягнення прибульцем краю екрану."""
@@ -120,21 +122,7 @@ class AlienInvasion:
         """Починає нову гру при натисканні кнопки Play."""
         button_clicked = self.play_button.rect.collidepoint(mouse_pos)
         if button_clicked and not self.stats.game_active:
-            # Скидає налаштування гри до початкових значень.
-            self.settings.initialize_dynamic_settings()
-            self.stats.reset_stats()
-            self.sb.prepare_score()
-            self.sb.prepare_level()
-            self.sb.prepare_ships()
-            self.stats.game_active = True
-
-            self.aliens.empty()
-            self.bullets.empty()
-            self._create_fleet()
-            self.ship.center_ship()
-
-            # Сховати курсор миші.
-            pg.mouse.set_visible(False)
+            self.start_new_game()
 
     def _create_alien(self, x_position, y_position):
         new_alien = Alien(self)
@@ -181,6 +169,23 @@ class AlienInvasion:
         else:
             self.stats.game_active = False
             pg.mouse.set_visible(True)
+    
+    def start_new_game(self):
+        # Скидає налаштування гри до початкових значень.
+            self.settings.initialize_dynamic_settings()
+            self.stats.reset_stats()
+            self.sb.prepare_score()
+            self.sb.prepare_level()
+            self.sb.prepare_ships()
+            self.stats.game_active = True
+
+            self.aliens.empty()
+            self.bullets.empty()
+            self._create_fleet()
+            self.ship.center_ship()
+
+            # Сховати курсор миші.
+            pg.mouse.set_visible(False)
             
     
     def _update_aliens(self):
