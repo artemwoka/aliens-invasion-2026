@@ -124,6 +124,7 @@ class AlienInvasion:
             self.settings.initialize_dynamic_settings()
             self.stats.reset_stats()
             self.sb.prepare_score()
+            self.sb.prepare_level()
             self.stats.game_active = True
 
             self.aliens.empty()
@@ -203,6 +204,9 @@ class AlienInvasion:
             self.bullets.empty()
             self._create_fleet()
             self.settings.increase_speed()
+            # Збільшує рівень.
+            self.stats.level += 1
+            self.sb.prepare_level()
         if collisions:
             for aliens in collisions.values():
 
